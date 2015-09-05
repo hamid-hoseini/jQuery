@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .siblings * {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+        .siblings button{
+            display: inline-block;
+            color: white;
+        }
+        .parent{
+            color: red;
+            border: 2px solid red;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn1").click(function () {
+                $("h2").siblings().addClass("parent");
+            });
+            $("#btn2").click(function () {
+                $("h2").siblings('p').addClass("parent");
+            });
+            $("#btn3").click(function () {
+                $("h2").next().addClass("parent");
+            });
+            $("#btn4").click(function () {
+                $("h2").nextAll().addClass("parent");
+            });
+            $("#btn5").click(function () {
+                $("h2").nextUntil('h6').addClass("parent");
+            });
+            $("#btn15").click(function () {
+                $("div").children().removeClass("parent");
+            });
+        });
+    </script>
+</head>
+<body class="siblings">
+
+<div>div (parent)
+    <p>p</p>
+    <span>span</span>
+    <h2>h2</h2>
+    <h3>h3</h3>
+    <h4>h4</h4>
+    <h5>h5</h5>
+    <h6>h6</h6>
+    <p>p</p>
+</div>
+<button id="btn1">Siblings of h2</button>
+<button id="btn2">Siblings of h2 (p)</button>
+<button id="btn3">Next of h2 </button>
+<button id="btn4">Next all of h2 </button>
+<button id="btn5">Next of h2 until h6 </button>
+<button id="btn15">reset</button>
+</body>
+</html>

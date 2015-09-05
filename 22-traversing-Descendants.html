@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .ancestors * {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+        .ancestors button{
+            display: inline-block;
+            color: white;
+        }
+        .parent{
+            color: red;
+            border: 2px solid red;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn1").click(function () {
+                $("div").children().addClass("parent");
+            });
+            $("#btn2").click(function () {
+                $("div").find('span').addClass("parent");
+            });
+            $("#btn3").click(function () {
+                $("div").find('*').addClass("parent");
+            });
+            $("#btn4").click(function () {
+                $("span").parents().removeClass("parent");
+                $("span").removeClass("parent");
+            });
+
+
+        });
+    </script>
+</head>
+
+<body class="ancestors">body (great-great-grandparent)
+<div style="width:500px;">div (great-grandparent)
+    <ul>ul (grandparent)
+        <li>li (direct parent)
+            <span>span</span>
+        </li>
+    </ul>
+</div>
+<button id="btn1">Children of Div</button>
+<button id="btn2">Find child of Div (span)</button>
+<button id="btn3">Find Children of Div </button>
+<button id="btn4">reset</button>
+</body>
+
+<!-- The outer red border, before the body element, is the html element (also an ancestor) -->
+</html>
