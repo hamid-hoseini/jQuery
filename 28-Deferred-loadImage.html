@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <title>Deferred</title>
+
+    <script>
+        $(function () {
+            $('input[type="file"]').bind('change', function(event) {
+
+                var file = this.files[0];
+
+                var promise = new Promise(function (resolve, reject) {
+                    var fileReader = new FileReader();
+
+                    fileReader.addEventListener('loadend', function () {
+                        resolve(this.result)
+                    });
+
+                    fileReader.addEventListener('error', function () {
+                        reject()
+                    });
+
+                    fileReader.readAsDataURL(file);
+                });
+
+                promise.then(function (data) {
+                    $('<img>').attr('src', data).css({
+                        maxWidth: '500px',
+                        float: 'left'
+                    }).appendTo('#results');
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div>
+    <input type="file" multiple/>
+</div>
+<div id="results">
+
+</div>
+</body>
+</html>

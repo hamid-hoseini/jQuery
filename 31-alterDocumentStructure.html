@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Example</title>
+    <link rel="stylesheet" href="css/base.css"/>
+    <!--How to include jquery in an html page - by external cdn, minified version and local copy-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jsonStateData.js"></script>
+    <style type="text/css">
+
+        span.div {
+            display: inline-block;
+            border: 1px solid gray;
+            border-radius: 0.25em;
+            font: 100 0.85em 'Open Sans';
+            padding: 0.25em;
+            margin: 0.25em;
+        }
+
+        span.footnote{
+            display: inline-block;
+            border-radius: 0.25em;
+            font: 600 0.5em 'Open Sans';
+            padding: 0.15em 0.5em;
+            margin: 0.15em 0.5em;
+            background-color: #ccc;
+        }
+
+        span.red_wrapper {
+            border:1px solid  #ff5f5d;
+            display: inline-block;
+        }
+
+
+    </style>
+    <script type="text/javascript">
+
+        jQuery(function(){
+            var jdiv = $('.sm1').eq(0); // Get the jquery wrapped div object
+            $('#btn1').click(function(){
+
+                // Append two divs with html data
+                jdiv.append($('<div>', { id: 'div1'}).html('I am div1'));
+                jdiv.append($('<div>', { id: 'div2'}).html('I am div2'));
+
+                // Append on top
+                jdiv.prepend($('<div>', { id: 'div3'}).html('I am div3'));
+
+                // Append div 4 before dif 2
+                $('#div2').before($('<div>', { id: 'div4'}).html('I am div4'));
+
+                //Append div5 after div1
+                $('#div1').after($('<div>', { id: 'div5'}).html('I am div5'));
+
+                //Replace div5 with div 6
+                $('#div5').replaceWith($('<div>', { id: 'div6'}).html('I am div6'));
+
+                var x = function(){
+                    var div = $(this);
+                    div.replaceWith($('<span>', { id: div.attr('id'), class: 'div'}).html(div.html()));
+                };
+
+                // Replace all divs with spans
+                jdiv.children('div').each(x);
+
+
+
+                // Append a span identifier to each span
+                $('<span>', {
+                    class: 'footnote'
+                }).html('I am a span!').appendTo($('span.div'));
+
+                //Class to explain prependTo(), insertAfter(), insertBefore()
+                $('.footnote').clone().appendTo(jdiv);
+
+                // Wrap inner
+                $('#div1').wrap($('<span>', {
+                    class: 'red_wrapper'
+                }));
+
+                $('#div2').wrapInner($('<span>', {
+                    class: 'red_wrapper'
+                }));
+
+
+                $('#div23, #div1, #div3').wrapAll($('<span>', {
+                    class: 'red_wrapper'
+                })); // notice that everything between the div23 and div1 gets removed
+
+                jdiv.empty();
+                jdiv.remove();
+
+
+
+            });
+
+
+        });
+
+    </script>
+</head>
+<body>
+<div class="container">
+
+    <h1>Document Structure</h1>
+    <span class="button" id='btn1'>Alter DOM</span>
+
+    <div class="container sm1">
+    </div>
+    <div class="container">
+        <span id='div23' class="div">
+            I am span 23!
+        </span>
+    </div>
+
+
+    <div>
+        <p><span>asdf</span></p>
+    </div>
+
+</div>
+</body>
+</html>

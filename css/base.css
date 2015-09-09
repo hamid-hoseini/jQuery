@@ -1,0 +1,81 @@
+/* Imports */
+/*--  Reset CSS Import to stop default browser styles to be applied  --*/
+@import url(http://reset5.googlecode.com/hg/reset.min.css);
+/*--  Google Font import for font styling  --*/
+@import url(http://fonts.googleapis.com/css?family=Syncopate:400,700|Open+Sans:400,300,600,700);
+
+
+/* Global */
+body{
+    background: #d7d7d5 url('../img/gray_noise.png') repeat;
+    /* Use noisetexturegenerator.com to generate a texture based on the color */
+    font: 300 100% Open Sans;
+}
+h1 {
+    font-family: Syncopate;
+    font-size: 1.5em;
+    margin: 0.25em;
+    padding: 0.25em 0.25em 0.25em 0;
+    color: #555;
+    text-shadow: 1px 1px 1px #e8e2dd;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+div.container{
+    padding: 3em;
+}
+
+div.state_container {
+    padding: 1em;
+    border: 1px solid gray;
+    border-radius: 0.25em;
+}
+
+span.button{
+    font-size: 0.85em;
+    font-weight: 600;
+    padding: 0.3em 0.5em 0.3em 0.5em;
+    display: inline-block;
+    color: #454545;
+    background-color: #999999;
+    border-radius: 0.25em;
+    border: 1px solid #4f4f4f;
+    cursor: pointer;
+    text-shadow: 1px 1px 1px #bababa;
+}
+
+span.button:hover{
+
+    color: #999999;
+    background-color: #454545;
+    text-shadow: 1px 1px 1px #232323;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

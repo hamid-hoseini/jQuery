@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <title>Deferred</title>
+    <style>
+        img {
+            float: left;
+            max-width: 500px;
+            margin: 0.5em;
+        }
+        #results {
+            border: 1px solid gray;
+            padding: 0.5em;
+            display:  none;
+        }
+
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+    </style>
+    <script>
+        $(function () {
+            $('input[type="file"]').bind('change', function(event) {
+                var $r = $('#results');
+                $r.hide();
+                var files = Array.prototype.slice.call(this.files);
+                var promises = files.map(createImageReaderPromise);
+                var promise = Promise.all(promises);
+                promise.then(function (data) {
+                    console.log(data);
+                    data.forEach(function (imageURI) {
+                        $('<img>').attr('src', imageURI).appendTo($r);
+                    });
+                    $r.fadeIn(500).delay(500);
+                });
+            });
+        });
+        function createImageReaderPromise(file) {
+            return new Promise(function (resolve, reject) {
+                var fileReader = new FileReader();
+                fileReader.addEventListener('loadend', function () {
+                    resolve(this.result)
+                });
+                fileReader.addEventListener('error', function () {
+                    reject()
+                });
+                fileReader.readAsDataURL(file);
+            });
+        }
+    </script>
+</head>
+<body>
+<div>
+    <input type="file" multiple/>
+</div>
+<div id="results" class="clearfix">
+
+</div>
+</body>
+</html>

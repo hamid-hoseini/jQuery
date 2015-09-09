@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Example</title>
+    <link rel="stylesheet" href="css/base.css"/>
+    <!--How to include jquery in an html page - by external cdn, minified version and local copy-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <style type="text/css">
+
+        p {
+            padding: 1em;
+        }
+
+        img {
+        }
+
+
+    </style>
+    <script type="text/javascript">
+
+        jQuery(function(){
+
+            $('span').click(function(){
+                var img = $('#img');
+                var offset = img.offset();
+
+
+
+                var position = img.position();
+                console.log('Offset Parent of img: ');
+                console.log(img.offsetParent());
+                img.offset(offset);
+                console.log('Img offset: ');
+                console.log(offset);
+                console.log('img position');
+                console.log(position);
+
+                var div = $('.sm1').eq(0);
+                console.log('Div Positon: ' + div.position().top);
+                console.log('Set parent div position to relative:');
+
+                $(div).css({
+                    'position': 'relative'
+                });
+
+                console.log('Offset parent of img now: ');
+                console.log(img.offsetParent());
+                position = img.position();
+                console.log(position);
+
+            });
+
+
+        });
+
+    </script>
+</head>
+<body>
+<div class="container">
+
+    <h1>Element Geometry</h1>
+    <span class="button">Change Location</span>
+    <div class="container sm1">
+        <img id='img' src="http://www.theimaginativeconservative.org/wp-content/uploads/2015/06/Fall-beautiful-nature-22666764-900-562.jpg" alt="Icons"/>
+    </div>
+
+
+
+</div>
+</body>
+</html>

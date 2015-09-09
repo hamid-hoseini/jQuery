@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Data</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $('div').eq(0).data('info', 'asdf53564asdf-16345');
+            $('div').eq(0).click(function (event) {
+                console.log($(this).data('info'));
+            });
+
+
+            $( "body" ).data( "foo", 52 );
+            $( "body" ).data( "bar", { myType: "test", count: 40 } );
+            $( "body" ).data( { baz: [ 1, 2, 3 ] } );
+            $( "body" ).data( "foo" ); // 52
+            $( "body" ).data(); // { foo: 52, bar: { myType: "test", count: 40 }, baz: [ 1, 2, 3 ] }
+        });
+    </script>
+</head>
+<body>
+<div>
+    Click Me!
+</div>
+</body>
+</html>
